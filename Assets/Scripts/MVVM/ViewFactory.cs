@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+#nullable enable
 
 namespace Assets.Scripts.MVVM
 {
@@ -22,20 +23,19 @@ namespace Assets.Scripts.MVVM
 
         public void Create<TView>(string name, Transform parent) where TView : IView
         {
-            var result = _viewContainer.GetView<TView>();
+            var prefab = _viewContainer.GetView<TView>();
 
-            if (result == null)
+            if (prefab == null)
             {
                 throw new Exception(
                     $"A prefab with type '{typeof(TView)}' must be assigned at view container SO.");
             }
 
-            CreateView(result, name, parent);
+            CreateView(prefab, name, parent);
         }
 
         private void CreateView(GameObject prefab, string name, Transform parent)
         {
-            prefab.SetActive(false);
             GameObject? gameObject;
             try
             {
@@ -60,7 +60,6 @@ namespace Assets.Scripts.MVVM
             _objectResolver.Inject(view);
             _objectResolver.Inject(viewModel);
 
-            prefab.SetActive(true);
             gameObject.SetActive(true);
         }
     }

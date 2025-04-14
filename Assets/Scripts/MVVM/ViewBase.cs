@@ -32,6 +32,11 @@ namespace Assets.Scripts.MVVM
         {
         }
 
+        protected virtual void OnDestroy()
+        {
+            ViewModel.Dispose();
+        }
+
         public IViewModel GetViewModel()
         {
             var viewType = GetType();

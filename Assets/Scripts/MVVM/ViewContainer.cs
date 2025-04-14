@@ -38,7 +38,7 @@ namespace Assets.Scripts.MVVM
             if (_mapping is null)
                 throw new InvalidOperationException();
 
-            return !_mapping.TryGetValue(view, out var gameObject) ? null : gameObject;
+            return _mapping.GetValueOrDefault(view);
         }
     }
 }
