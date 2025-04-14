@@ -18,10 +18,5 @@ namespace Assets.Scripts.AceOfShadows
         {
             _commandDispatcher.Execute(new TestCommand());
         }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
     }
 }

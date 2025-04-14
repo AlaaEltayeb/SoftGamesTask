@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.AceOfShadows
 {
-    public class CardView : ViewBase<CardViewModel>
+    public sealed class CardView : ViewBase<CardViewModel>
     {
         [SerializeField]
         private Button _cardButton;

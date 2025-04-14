@@ -1,9 +1,9 @@
+#nullable enable
 using JetBrains.Annotations;
 using System;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-#nullable enable
 
 namespace Assets.Scripts.MVVM
 {
@@ -56,9 +56,6 @@ namespace Assets.Scripts.MVVM
                 throw new Exception(
                     $"View '{name}' doesn't have a ViewModel, make sure that view extends ViewBase<T>.");
             }
-
-            _objectResolver.Inject(view);
-            _objectResolver.Inject(viewModel);
 
             gameObject.SetActive(true);
         }
