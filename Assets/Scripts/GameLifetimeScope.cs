@@ -27,11 +27,12 @@ namespace Assets.Scripts
 
         private static void AddViewsAndViewModels(IContainerBuilder builder)
         {
-            RegisterViewWithViewModel<CardView, CardViewModel>(builder, Lifetime.Transient);
-            RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Transient);
+            RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Scoped);
+            RegisterComponentsInHierarchy<AceOfShadowsView, AceOfShadowsViewModel>(builder, Lifetime.Scoped);
+            RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Scoped);
         }
 
-        private static void RegisterViewWithViewModel<TView, TViewModel>(
+        private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(
             IContainerBuilder builder,
             Lifetime lifetime,
             string newGameObjectName = null)
@@ -44,8 +45,7 @@ namespace Assets.Scripts
 
         private static void RegisterComponentsInHierarchy<TView, TViewModel>(
             IContainerBuilder builder,
-            Lifetime lifetime,
-            string newGameObjectName = null)
+            Lifetime lifetime)
             where TViewModel : class, IViewModel
             where TView : ViewBase<TViewModel>, IView
         {
