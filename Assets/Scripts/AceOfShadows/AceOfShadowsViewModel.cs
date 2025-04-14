@@ -16,7 +16,7 @@ namespace Assets.Scripts.AceOfShadows
             _viewFactory = viewFactory;
         }
 
-        public void GenerateCards(int cardsCount, Transform cardsParent)
+        public void GenerateCards(int cardsCount, Transform cardsParent, Transform cardsTargetParent)
         {
             for (var i = 0; i < cardsCount; i++)
             {
@@ -24,7 +24,9 @@ namespace Assets.Scripts.AceOfShadows
                     $"{CardViewName}{i}",
                     cardsParent);
 
-                _cardsStack.Push(view.GetViewModel() as CardViewModel);
+                var viewModel = view.GetViewModel() as CardViewModel;
+                viewModel.CardTargetParent = cardsTargetParent;
+                _cardsStack.Push(viewModel);
             }
         }
 

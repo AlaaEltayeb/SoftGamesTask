@@ -13,13 +13,16 @@ namespace Assets.Scripts.AceOfShadows
         [SerializeField]
         private Transform _cardsParent;
 
+        [SerializeField]
+        private Transform _cardsTargetParent;
+
         private CancellationTokenSource _cancellationTokenSource;
 
         private bool _keepRunning = true;
 
         protected override void Bind()
         {
-            ViewModel.GenerateCards(_cardsCount, _cardsParent);
+            ViewModel.GenerateCards(_cardsCount, _cardsParent, _cardsTargetParent);
             _cancellationTokenSource = new CancellationTokenSource();
 
             PopCardAsync(_cancellationTokenSource.Token);

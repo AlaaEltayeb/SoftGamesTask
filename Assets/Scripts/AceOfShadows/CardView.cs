@@ -1,4 +1,5 @@
 using Assets.Scripts.MVVM;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,7 +26,8 @@ namespace Assets.Scripts.AceOfShadows
 
         private void MoveCard()
         {
-            gameObject.SetActive(false);
+            transform.parent = ViewModel.CardTargetParent;
+            transform.DOMove(ViewModel.CardTargetParent.position, 2f);
         }
     }
 }
