@@ -1,4 +1,6 @@
 using Assets.Scripts.MVVM;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.AceOfShadows
@@ -11,9 +13,34 @@ namespace Assets.Scripts.AceOfShadows
         [SerializeField]
         private Transform _cardsParent;
 
+        private CancellationTokenSource _cancellationTokenSource;
+
+        private bool _keepRunning = true;
+
         protected override void Bind()
         {
             ViewModel.GenerateCards(_cardsCount, _cardsParent);
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            PopCardAsync(_cancellationTokenSource.Token);
+        }
+
+        private async Task PopCardAsync(CancellationToken cancellationToken)
+        {
+            while (_keepRunning)
+            {
+                _keepRunning = ViewModel.PopCard();
+                await Task.Delay(1000, cancellationToken);
+            }
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource = null;
+            _keepRunning = false;
         }
     }
 }

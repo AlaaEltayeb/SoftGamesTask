@@ -1,22 +1,21 @@
-using Assets.Scripts.Command;
 using Assets.Scripts.MVVM;
-using JetBrains.Annotations;
+using System;
 
 namespace Assets.Scripts.AceOfShadows
 {
-    [UsedImplicitly]
     public sealed class CardViewModel : ViewModelBase
     {
-        private readonly ICommandDispatcher _commandDispatcher;
+        public Action OnCardPopped { get; set; }
 
-        public CardViewModel(ICommandDispatcher commandDispatcher)
+        public void PopCard()
         {
-            _commandDispatcher = commandDispatcher;
+            OnCardPopped?.Invoke();
         }
 
-        public void OnButtonClicked()
+        public override void Dispose()
         {
-            _commandDispatcher.Execute(new TestCommand());
+            OnCardPopped = null;
+            base.Dispose();
         }
     }
 }

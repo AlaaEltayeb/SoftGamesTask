@@ -21,7 +21,7 @@ namespace Assets.Scripts.MVVM
             _viewContainer = viewContainer;
         }
 
-        public void Create<TView>(string name, Transform parent) where TView : IView
+        public IView Create<TView>(string name, Transform parent) where TView : IView
         {
             var prefab = _viewContainer.GetView<TView>();
 
@@ -31,10 +31,10 @@ namespace Assets.Scripts.MVVM
                     $"A prefab with type '{typeof(TView)}' must be assigned at view container SO.");
             }
 
-            CreateView(prefab, name, parent);
+            return CreateView(prefab, name, parent);
         }
 
-        private void CreateView(GameObject prefab, string name, Transform parent)
+        private IView CreateView(GameObject prefab, string name, Transform parent)
         {
             GameObject? gameObject;
             try
@@ -58,6 +58,8 @@ namespace Assets.Scripts.MVVM
             }
 
             gameObject.SetActive(true);
+
+            return view;
         }
     }
 }

@@ -7,20 +7,25 @@ namespace Assets.Scripts.AceOfShadows
     public sealed class CardView : ViewBase<CardViewModel>
     {
         [SerializeField]
-        private Button _cardButton;
+        private Image _cardImage;
 
         protected override void Bind()
         {
             base.Bind();
 
-            _cardButton.onClick.AddListener(ViewModel.OnButtonClicked);
+            _cardImage.color = GenerateRandomColor();
+
+            ViewModel.OnCardPopped += MoveCard;
         }
 
-        protected override void OnDestroy()
+        private Color GenerateRandomColor()
         {
-            base.OnDestroy();
+            return new Color(Random.value, Random.value, Random.value);
+        }
 
-            _cardButton.onClick.RemoveAllListeners();
+        private void MoveCard()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

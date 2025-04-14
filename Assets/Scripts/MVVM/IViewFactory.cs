@@ -4,7 +4,7 @@ namespace Assets.Scripts.MVVM
 {
     public interface IViewFactory
     {
-        void Create<TView>(
+        IView Create<TView>(
             string name,
             Transform parent)
             where TView : IView;

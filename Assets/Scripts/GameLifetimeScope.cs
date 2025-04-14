@@ -29,7 +29,7 @@ namespace Assets.Scripts
         {
             RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Scoped);
             RegisterComponentsInHierarchy<AceOfShadowsView, AceOfShadowsViewModel>(builder, Lifetime.Scoped);
-            RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Scoped);
+            RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
         }
 
         private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(
