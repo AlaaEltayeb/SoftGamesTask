@@ -2,6 +2,7 @@ using Assets.Scripts.AceOfShadows;
 using Assets.Scripts.Command;
 using Assets.Scripts.Common;
 using Assets.Scripts.InGameMenu;
+using Assets.Scripts.Loading;
 using Assets.Scripts.MagicWords;
 using Assets.Scripts.MVVM;
 using Assets.Scripts.Particle;
@@ -35,8 +36,11 @@ namespace Assets.Scripts
 
         private static void AddViewsAndViewModels(IContainerBuilder builder)
         {
-            RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Scoped);
-            RegisterComponentsInHierarchy<InGameMenuView, InGameMenuViewModel>(builder, Lifetime.Scoped);
+            RegisterViewWithViewModelOnNewGameObject<LoadingView, LoadingViewModel>(builder, Lifetime.Transient);
+
+            RegisterViewWithViewModelOnNewGameObject<UIView, UIViewModel>(builder, Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<FPSView, FPSViewModel>(builder, Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<InGameMenuView, InGameMenuViewModel>(builder, Lifetime.Scoped);
 
             RegisterViewWithViewModelOnNewGameObject<ConversationView, ConversationViewModel>(builder,
                 Lifetime.Transient);

@@ -3,6 +3,7 @@ using Assets.Scripts.MagicWords;
 using Assets.Scripts.MVVM;
 using Assets.Scripts.Particle;
 using Assets.Scripts.SceneHolder;
+using UnityEngine;
 
 namespace Assets.Scripts.InGameMenu
 {
@@ -34,11 +35,15 @@ namespace Assets.Scripts.InGameMenu
 
         private void CreateScene<TView>() where TView : IView
         {
-            var type = typeof(TView);
             var view = _viewFactory.Create<TView>(
-                $"{nameof(type)}");
+                $"{nameof(TView)}");
 
             _sceneHolder.SetActiveScene(view);
+        }
+
+        public void Invoke()
+        {
+            Debug.Log("Invoked");
         }
     }
 }

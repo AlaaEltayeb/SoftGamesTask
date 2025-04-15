@@ -1,3 +1,5 @@
+using Assets.Scripts.Command;
+using Assets.Scripts.Loading;
 using Assets.Scripts.MVVM;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +21,19 @@ namespace Assets.Scripts.MagicWords
 
         private Material _spriteAssetMaterial;
 
-        private readonly IViewFactory _viewFactory;
+        private readonly ICommandDispatcher _commandDispatcher;
 
-        private List<Sprite> _emojis = new();
+        private readonly List<Sprite> _emojis = new();
+        private readonly IView _loadingView;
 
         public Conversation Conversation { get; set; } = new();
         public List<Sprite> Avatars { get; set; } = new();
         public TMP_SpriteAsset EmojisSpriteAsset { get; set; }
 
-        public ConversationModel(IViewFactory viewFactory)
+        public ConversationModel(IViewFactory viewFactory, ICommandDispatcher commandDispatcher)
         {
-            _viewFactory = viewFactory;
+            _loadingView = viewFactory.Create<LoadingView>($"{typeof(LoadingView)}");
+            _commandDispatcher = commandDispatcher;
 
             LoadConversation();
         }
@@ -76,10 +80,8 @@ namespace Assets.Scripts.MagicWords
 
             EmojisSpriteAsset = SpriteAssetGenerator.CreateSpriteAsset(_emojis, _spriteAssetMaterial);
 
-            //var view = _viewFactory.Create<ConversationView>(
-            //    "ConversationView",
-            //    null);
-
+            _loadingView.Dispose();
+            _commandDispatcher.Execute(new ShowMainMenuCommand());
             Debug.Log("Finished Downloading All Avatars");
         }
 

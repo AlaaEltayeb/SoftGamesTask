@@ -30,7 +30,7 @@ namespace Assets.Scripts.AceOfShadows
 
         private async Task MoveCardsAsync(CancellationToken cancellationToken)
         {
-            await DelaySafe(5f, cancellationToken);
+            await DelaySafe(1f, cancellationToken);
 
             while (_keepRunning)
             {
