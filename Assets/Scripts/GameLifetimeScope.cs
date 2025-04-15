@@ -1,6 +1,6 @@
-using Assets.Scripts.AceOfShadows;
 using Assets.Scripts.Command;
 using Assets.Scripts.Common;
+using Assets.Scripts.MagicWords;
 using Assets.Scripts.MVVM;
 using UnityEngine;
 using VContainer;
@@ -22,14 +22,16 @@ namespace Assets.Scripts
 
             builder.Register<IViewFactory, ViewFactory>(Lifetime.Singleton);
 
+            builder.Register<IConversationModel, ConversationModel>(Lifetime.Singleton);
+
             AddViewsAndViewModels(builder);
         }
 
         private static void AddViewsAndViewModels(IContainerBuilder builder)
         {
             RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Scoped);
-            RegisterComponentsInHierarchy<AceOfShadowsView, AceOfShadowsViewModel>(builder, Lifetime.Scoped);
-            RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
+            //RegisterComponentsInHierarchy<AceOfShadowsView, AceOfShadowsViewModel>(builder, Lifetime.Scoped);
+            //RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
         }
 
         private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(
