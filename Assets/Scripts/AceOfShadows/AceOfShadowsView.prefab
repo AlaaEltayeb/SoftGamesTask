@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 6198125144009086518}
   - component: {fileID: 5270537055149631661}
   m_Layer: 5
-  m_Name: AceOfShadowsCanvas
+  m_Name: AceOfShadowsView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
