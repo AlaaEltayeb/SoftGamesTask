@@ -1,3 +1,4 @@
+using Assets.Scripts.AceOfShadows;
 using Assets.Scripts.Command;
 using Assets.Scripts.Common;
 using Assets.Scripts.MagicWords;
@@ -36,8 +37,9 @@ namespace Assets.Scripts
             RegisterViewWithViewModelOnNewGameObject<DialogueLeftView, DialogueViewModel>(builder, Lifetime.Transient);
             RegisterViewWithViewModelOnNewGameObject<DialogueRightView, DialogueViewModel>(builder, Lifetime.Transient);
 
-            //RegisterComponentsInHierarchy<AceOfShadowsView, AceOfShadowsViewModel>(builder, Lifetime.Scoped);
-            //RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<AceOfShadowsView, AceOfShadowsViewModel>(builder,
+                Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
         }
 
         private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(

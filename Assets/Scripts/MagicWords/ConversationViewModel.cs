@@ -37,7 +37,7 @@ namespace Assets.Scripts.MagicWords
                 {
                     var view = _viewFactory.Create<DialogueRightView>(
                         $"{DialogueViewName}{i}",
-                        dialogueParent) as DialogueRightView;
+                        dialogueParent) as DialogueViewBase;
 
                     view!.Initialize(avatarSprite, characterName, dialogueText, _conversationModel.EmojisSpriteAsset);
                 }
@@ -45,7 +45,7 @@ namespace Assets.Scripts.MagicWords
                 {
                     var view = _viewFactory.Create<DialogueLeftView>(
                         $"{DialogueViewName}{i}",
-                        dialogueParent) as DialogueLeftView;
+                        dialogueParent) as DialogueViewBase;
 
                     view!.Initialize(avatarSprite, characterName, dialogueText, _conversationModel.EmojisSpriteAsset);
                 }
@@ -57,11 +57,13 @@ namespace Assets.Scripts.MagicWords
             return _emojiTagRegex.Replace(input, match =>
             {
                 var tag = match.Groups[1].Value;
-                var id = _conversationModel.EmojisSpriteAsset.spriteInfoList.Find(sprite =>
-                    {
-                        return sprite.name == tag;
-                    })
+
+                var id = _conversationModel.EmojisSpriteAsset.spriteInfoList
+                    .Find(sprite => sprite.name == tag)
                     .id;
+
+                Debug.Log(_conversationModel.EmojisSpriteAsset.material);
+
                 return $"<sprite={id}>";
             });
         }

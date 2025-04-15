@@ -21,8 +21,9 @@ namespace Assets.Scripts.MagicWords
 
         private readonly IViewFactory _viewFactory;
 
+        private List<Sprite> _emojis = new();
+
         public Conversation Conversation { get; set; } = new();
-        public List<Sprite> Emojis { get; set; } = new();
         public List<Sprite> Avatars { get; set; } = new();
         public TMP_SpriteAsset EmojisSpriteAsset { get; set; }
 
@@ -41,14 +42,13 @@ namespace Assets.Scripts.MagicWords
         {
             Addressables.LoadAssetAsync<TextAsset>(ConversationFileName)
                 .Completed += OnConversationLoaded;
-
-            Addressables.LoadAssetAsync<Material>(SpriteAssetMaterialName)
-                .Completed += OnMaterialLoaded;
         }
 
         private void OnMaterialLoaded(AsyncOperationHandle<Material> handle)
         {
-            _spriteAssetMaterial = handle.Result;
+            _spriteAssetMaterial = new Material(handle.Result);
+
+            DownloadAllSpritesAsync();
 
             Addressables.Release(handle);
         }
@@ -57,7 +57,8 @@ namespace Assets.Scripts.MagicWords
         {
             Conversation = JsonUtility.FromJson<Conversation>(handle.Result.text);
 
-            DownloadAllSpritesAsync();
+            Addressables.LoadAssetAsync<Material>(SpriteAssetMaterialName)
+                .Completed += OnMaterialLoaded;
 
             Addressables.Release(handle);
         }
@@ -73,11 +74,11 @@ namespace Assets.Scripts.MagicWords
 
             await Task.WhenAll(downloadTasks);
 
-            CreateSpriteAsset();
+            EmojisSpriteAsset = SpriteAssetGenerator.CreateSpriteAsset(_emojis, _spriteAssetMaterial);
 
-            var view = _viewFactory.Create<ConversationView>(
-                "ConversationView",
-                null);
+            //var view = _viewFactory.Create<ConversationView>(
+            //    "ConversationView",
+            //    null);
 
             Debug.Log("Finished Downloading All Avatars");
         }
@@ -128,60 +129,7 @@ namespace Assets.Scripts.MagicWords
                 new Vector2(0.5f, 0.5f));
 
             sprite.name = name;
-            Emojis.Add(sprite);
-        }
-
-        private void CreateSpriteAsset()
-        {
-            var spriteCount = Emojis.Count;
-            var spriteSize = Emojis[0].texture.width;
-
-            var gridSize = Mathf.CeilToInt(Mathf.Sqrt(spriteCount));
-            var atlasSize = gridSize * spriteSize;
-
-            Texture2D atlas = new(atlasSize, atlasSize, TextureFormat.ARGB32, false);
-            var rects = atlas.PackTextures(Emojis.ConvertAll(sprite => sprite.texture).ToArray(), 4, spriteSize);
-
-            var asset = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
-            asset.name = "RuntimeEmojiAsset";
-            asset.spriteSheet = atlas;
-            asset.spriteInfoList = new List<TMP_Sprite>();
-            asset.material = _spriteAssetMaterial;
-
-            for (var i = 0; i < Emojis.Count; i++)
-            {
-                var rect = rects[i];
-                var sprite = new TMP_Sprite
-                {
-                    id = i,
-                    name = Emojis[i].name,
-                    unicode = 0xE000 + i,
-                    x = rect.x * atlas.width,
-                    y = rect.y * atlas.height,
-                    width = rect.width * atlas.width,
-                    height = rect.height * atlas.height,
-                    xOffset = 0,
-                    yOffset = 30,
-                    xAdvance = rect.width * atlas.width,
-                    scale = 1f,
-                    sprite = Emojis[i],
-                };
-
-                asset.spriteInfoList.Add(sprite);
-            }
-
-            var index = 0;
-            foreach (var spriteCharacter in asset.spriteCharacterTable)
-            {
-                spriteCharacter.glyphIndex = (uint)index;
-                index++;
-            }
-
-            _spriteAssetMaterial.mainTexture = asset.spriteSheet;
-
-            asset.UpdateLookupTables();
-
-            EmojisSpriteAsset = asset;
+            _emojis.Add(sprite);
         }
     }
 }
