@@ -48,7 +48,7 @@ namespace Assets.Scripts
 
             builder.RegisterViewWithViewModelOnNewGameObject<UIView, UIViewModel>(Lifetime.Transient);
             builder.RegisterViewWithViewModelOnNewGameObject<FPSView, FPSViewModel>(Lifetime.Transient);
-            builder.RegisterViewWithViewModelOnNewGameObject<InGameMenuView, InGameMenuViewModel>(Lifetime.Scoped);
+            builder.RegisterViewWithViewModelOnNewGameObject<InGameMenuView, InGameMenuViewModel>(Lifetime.Transient);
         }
 
         private static void AddMagicWordsViews(IContainerBuilder builder)

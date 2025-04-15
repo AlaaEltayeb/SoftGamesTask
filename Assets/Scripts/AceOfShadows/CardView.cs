@@ -17,6 +17,12 @@ namespace Assets.Scripts.AceOfShadows
             _cardImage.color = GenerateRandomColor();
 
             ViewModel.OnMoveCard += MoveCard;
+            ViewModel.OnCardSetup += SetupCard;
+        }
+
+        private void SetupCard(float offset)
+        {
+            transform.position = new Vector3(transform.position.x + offset, transform.position.y, transform.position.z);
         }
 
         private Color GenerateRandomColor()
