@@ -16,10 +16,15 @@ namespace Assets.Scripts.MagicWords
         [SerializeField]
         private TextMeshProUGUI _dialogueText;
 
-        public void Initialize(Sprite characterImage, string characterName, string dialogue)
+        public void Initialize(
+            Sprite characterImage,
+            string characterName,
+            string dialogue,
+            TMP_SpriteAsset spriteAsset)
         {
             _characterImage.sprite = characterImage;
             _characterNameText.text = characterName;
+            _dialogueText.spriteAsset = spriteAsset;
             _dialogueText.text = dialogue;
         }
     }

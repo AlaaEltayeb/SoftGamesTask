@@ -140,7 +140,7 @@ namespace Assets.Scripts.MagicWords
             var atlasSize = gridSize * spriteSize;
 
             Texture2D atlas = new(atlasSize, atlasSize, TextureFormat.ARGB32, false);
-            var rects = atlas.PackTextures(Emojis.ConvertAll(sprite => sprite.texture).ToArray(), 0, spriteSize);
+            var rects = atlas.PackTextures(Emojis.ConvertAll(sprite => sprite.texture).ToArray(), 4, spriteSize);
 
             var asset = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
             asset.name = "RuntimeEmojiAsset";
@@ -161,7 +161,7 @@ namespace Assets.Scripts.MagicWords
                     width = rect.width * atlas.width,
                     height = rect.height * atlas.height,
                     xOffset = 0,
-                    yOffset = 100,
+                    yOffset = 30,
                     xAdvance = rect.width * atlas.width,
                     scale = 1f,
                     sprite = Emojis[i],

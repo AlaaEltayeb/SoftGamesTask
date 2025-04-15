@@ -1,4 +1,5 @@
 using Assets.Scripts.MVVM;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Assets.Scripts.MagicWords
@@ -6,6 +7,7 @@ namespace Assets.Scripts.MagicWords
     public sealed class ConversationViewModel : ViewModelBase
     {
         private const string DialogueViewName = "Dialogue";
+        private readonly Regex _emojiTagRegex = new(@"\{(.*?)\}");
 
         private readonly IConversationModel _conversationModel;
         private readonly IViewFactory _viewFactory;
@@ -29,13 +31,15 @@ namespace Assets.Scripts.MagicWords
                 var characterName = dialogue.name;
                 var dialogueText = dialogue.text;
 
+                dialogueText = ReplaceEmojiTags(dialogueText);
+
                 if (avatar.position == "right")
                 {
                     var view = _viewFactory.Create<DialogueRightView>(
                         $"{DialogueViewName}{i}",
                         dialogueParent) as DialogueRightView;
 
-                    view!.Initialize(avatarSprite, characterName, dialogueText);
+                    view!.Initialize(avatarSprite, characterName, dialogueText, _conversationModel.EmojisSpriteAsset);
                 }
                 else
                 {
@@ -43,9 +47,23 @@ namespace Assets.Scripts.MagicWords
                         $"{DialogueViewName}{i}",
                         dialogueParent) as DialogueLeftView;
 
-                    view!.Initialize(avatarSprite, characterName, dialogueText);
+                    view!.Initialize(avatarSprite, characterName, dialogueText, _conversationModel.EmojisSpriteAsset);
                 }
             }
+        }
+
+        public string ReplaceEmojiTags(string input)
+        {
+            return _emojiTagRegex.Replace(input, match =>
+            {
+                var tag = match.Groups[1].Value;
+                var id = _conversationModel.EmojisSpriteAsset.spriteInfoList.Find(sprite =>
+                    {
+                        return sprite.name == tag;
+                    })
+                    .id;
+                return $"<sprite={id}>";
+            });
         }
     }
 }
