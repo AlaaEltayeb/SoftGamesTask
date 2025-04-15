@@ -3,6 +3,7 @@ using Assets.Scripts.Command;
 using Assets.Scripts.Common;
 using Assets.Scripts.MagicWords;
 using Assets.Scripts.MVVM;
+using Assets.Scripts.Particle;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -40,6 +41,10 @@ namespace Assets.Scripts
             RegisterViewWithViewModelOnNewGameObject<AceOfShadowsView, AceOfShadowsViewModel>(builder,
                 Lifetime.Transient);
             RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
+
+            RegisterComponentsInHierarchy<ParticleView, ParticleViewModel>(builder,
+                Lifetime.Scoped);
+            RegisterComponentsInHierarchy<FireControllerView, FireControllerViewModel>(builder, Lifetime.Scoped);
         }
 
         private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(

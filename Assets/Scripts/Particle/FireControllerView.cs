@@ -1,16 +1,29 @@
+using Assets.Scripts.MVVM;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class FireControllerView : MonoBehaviour
+namespace Assets.Scripts.Particle
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public sealed class FireControllerView : ViewBase<FireControllerViewModel>
     {
-        
-    }
+        private Animator _animator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private Button _controlButton;
+
+        private bool _isFireOn = true;
+
+        protected override void Bind()
+        {
+            base.Bind();
+
+            _controlButton = GetComponentInChildren<Button>();
+            _animator = GetComponentInChildren<Animator>();
+
+            _controlButton.onClick.AddListener(() =>
+            {
+                _isFireOn = !_isFireOn;
+                _animator.SetBool("IsFireOn", _isFireOn);
+            });
+        }
     }
 }
