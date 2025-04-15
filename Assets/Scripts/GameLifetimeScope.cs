@@ -16,12 +16,13 @@ namespace Assets.Scripts
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance<IViewContainer>(_viewContainer);
-            builder.Register<ConversationModel>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<ICommandFactory, CommandFactory>(Lifetime.Singleton);
             builder.Register<ICommandDispatcher, CommandDispatcher>(Lifetime.Singleton);
 
             builder.Register<IViewFactory, ViewFactory>(Lifetime.Singleton);
+
+            builder.Register<ConversationModel>(Lifetime.Singleton).AsImplementedInterfaces();
 
             AddViewsAndViewModels(builder);
         }
@@ -29,7 +30,12 @@ namespace Assets.Scripts
         private static void AddViewsAndViewModels(IContainerBuilder builder)
         {
             RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Scoped);
-            RegisterComponentsInHierarchy<ConversationView, ConversationViewModel>(builder, Lifetime.Scoped);
+
+            RegisterViewWithViewModelOnNewGameObject<ConversationView, ConversationViewModel>(builder,
+                Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<DialogueLeftView, DialogueViewModel>(builder, Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<DialogueRightView, DialogueViewModel>(builder, Lifetime.Transient);
+
             //RegisterComponentsInHierarchy<AceOfShadowsView, AceOfShadowsViewModel>(builder, Lifetime.Scoped);
             //RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
         }

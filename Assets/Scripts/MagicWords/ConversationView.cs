@@ -11,6 +11,8 @@ namespace Assets.Scripts.MagicWords
         protected override void Bind()
         {
             base.Bind();
+
+            ViewModel.GenerateDialogues(_dialogueParent);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.MagicWords
 {
-    public sealed class DialogueView : ViewBase<DialogueViewModel>
+    public abstract class DialogueViewBase : ViewBase<DialogueViewModel>
     {
         [SerializeField]
         private Image _characterImage;
@@ -16,9 +16,11 @@ namespace Assets.Scripts.MagicWords
         [SerializeField]
         private TextMeshProUGUI _dialogueText;
 
-        protected override void Bind()
+        public void Initialize(Sprite characterImage, string characterName, string dialogue)
         {
-            base.Bind();
+            _characterImage.sprite = characterImage;
+            _characterNameText.text = characterName;
+            _dialogueText.text = dialogue;
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623770755902223916}
   - component: {fileID: 7648596391534677401}
-  - component: {fileID: 8089396668508509074}
+  - component: {fileID: -8855496958714821780}
   m_Layer: 5
   m_Name: DialogueRightView
   m_TagString: Untagged
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &8089396668508509074
+--- !u!114 &-8855496958714821780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 215455550739114946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea94a4bc9b505764392a25be2f74acf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bac2b0c8f244d4ebe4d53b806a2361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 7105465930734090910}
