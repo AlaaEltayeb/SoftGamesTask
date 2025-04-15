@@ -62,6 +62,7 @@ namespace Assets.Scripts.MagicWords
                     .Find(sprite => sprite.name == tag)
                     .id;
 
+                Debug.Log(id);
                 Debug.Log(_conversationModel.EmojisSpriteAsset.material);
 
                 return $"<sprite={id}>";
