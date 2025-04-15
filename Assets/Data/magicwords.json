@@ -23,7 +23,7 @@
     [
         {
             "name": "sad",
-            "url": "https://api.dicebear.com:81/9.x/fun-emoji/png?seed=Sad"
+            "url": "https://api.dicebear.com/9.x/fun-emoji/png?seed=Sad"
         },
         {
             "name": "intrigued",

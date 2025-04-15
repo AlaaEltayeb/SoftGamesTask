@@ -6,8 +6,8 @@ namespace Assets.Scripts.MagicWords
     [Serializable]
     public sealed class Conversation
     {
-        public List<Dialogue> Dialogue;
-        public List<Emoji> Emojies;
-        public List<Avatar> Avatars;
+        public List<Dialogue> dialogue;
+        public List<Emoji> emojies;
+        public List<Avatar> avatars;
     }
 }
