@@ -6,6 +6,7 @@ namespace Assets.Scripts.Particle
 {
     public sealed class FireControllerView : ViewBase<FireControllerViewModel>
     {
+        [SerializeField]
         private Animator _animator;
 
         private Button _controlButton;
@@ -17,7 +18,6 @@ namespace Assets.Scripts.Particle
             base.Bind();
 
             _controlButton = GetComponentInChildren<Button>();
-            _animator = GetComponentInChildren<Animator>();
 
             _controlButton.onClick.AddListener(() =>
             {

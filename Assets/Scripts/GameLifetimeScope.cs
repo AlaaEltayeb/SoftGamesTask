@@ -1,9 +1,11 @@
 using Assets.Scripts.AceOfShadows;
 using Assets.Scripts.Command;
 using Assets.Scripts.Common;
+using Assets.Scripts.InGameMenu;
 using Assets.Scripts.MagicWords;
 using Assets.Scripts.MVVM;
 using Assets.Scripts.Particle;
+using Assets.Scripts.SceneHolder;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -19,6 +21,8 @@ namespace Assets.Scripts
         {
             builder.RegisterInstance<IViewContainer>(_viewContainer);
 
+            builder.Register<ISceneHolder, SceneHolder.SceneHolder>(Lifetime.Singleton);
+
             builder.Register<ICommandFactory, CommandFactory>(Lifetime.Singleton);
             builder.Register<ICommandDispatcher, CommandDispatcher>(Lifetime.Singleton);
 
@@ -32,6 +36,7 @@ namespace Assets.Scripts
         private static void AddViewsAndViewModels(IContainerBuilder builder)
         {
             RegisterComponentsInHierarchy<FPSView, FPSViewModel>(builder, Lifetime.Scoped);
+            RegisterComponentsInHierarchy<InGameMenuView, InGameMenuViewModel>(builder, Lifetime.Scoped);
 
             RegisterViewWithViewModelOnNewGameObject<ConversationView, ConversationViewModel>(builder,
                 Lifetime.Transient);
@@ -42,9 +47,10 @@ namespace Assets.Scripts
                 Lifetime.Transient);
             RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
 
-            RegisterComponentsInHierarchy<ParticleView, ParticleViewModel>(builder,
-                Lifetime.Scoped);
-            RegisterComponentsInHierarchy<FireControllerView, FireControllerViewModel>(builder, Lifetime.Scoped);
+            RegisterViewWithViewModelOnNewGameObject<ParticleView, ParticleViewModel>(builder,
+                Lifetime.Transient);
+            RegisterViewWithViewModelOnNewGameObject<FireControllerView, FireControllerViewModel>(builder,
+                Lifetime.Transient);
         }
 
         private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(

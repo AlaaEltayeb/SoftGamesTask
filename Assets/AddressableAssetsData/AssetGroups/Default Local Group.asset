@@ -20,8 +20,58 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2275a521c69866b4689735db39f5062c
+    m_Address: Assets/Scripts/Particle/Materials/MAT_Sparks.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e241fdd5d3cf794d9ff341443f54b51
+    m_Address: Assets/Scripts/Particle/Animation/FireOn.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bfa83e8cbf524542ba782ba47029dd3
+    m_Address: Assets/Scripts/Particle/Materials/MAT_Fire_Add.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70359751edd22ec4fb2b5f3f07c001bd
+    m_Address: Assets/Scripts/Particle/Materials/MAT_Fire_Alpha.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89956e675b749204c8e10395ce2b5fb9
+    m_Address: Assets/Scripts/Particle/Objects/PS_Parent.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 946d15ba8aa29dd47a02bf5229352601
+    m_Address: Assets/Scripts/Particle/Textures/TXT_Sparks_01.tga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9480241d8f7ab004bb5b8b0f898d56da
+    m_Address: Assets/Scripts/Particle/Textures/TXT_Fire_01.tga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 980df10d88f407f408b7e33a189b1377
     m_Address: SpriteAssetMaterial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a824d3ab418522240a58fd861551a5bd
+    m_Address: Assets/Scripts/Particle/Animation/FireAnimatorController.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac03b8bc4a775c54a99ad58bb180782a
+    m_Address: Assets/Scripts/Particle/Animation/FireOff.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3849805a6cf9ed42b64886d16aa24c0
+    m_Address: Assets/Scripts/Particle/Materials/MAT_Glow.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

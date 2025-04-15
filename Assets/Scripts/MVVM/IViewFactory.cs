@@ -6,7 +6,7 @@ namespace Assets.Scripts.MVVM
     {
         IView Create<TView>(
             string name,
-            Transform parent)
+            Transform parent = null)
             where TView : IView;
     }
 }

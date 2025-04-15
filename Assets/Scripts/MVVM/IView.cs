@@ -1,6 +1,8 @@
+using System;
+
 namespace Assets.Scripts.MVVM
 {
-    public interface IView
+    public interface IView : IDisposable
     {
         IViewModel GetViewModel();
     }

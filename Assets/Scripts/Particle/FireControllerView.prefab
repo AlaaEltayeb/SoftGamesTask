@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329df729903d2874f8427328cd7a3642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireParticle: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &3425909095355523722
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace Assets.Scripts.MVVM
             _viewContainer = viewContainer;
         }
 
-        public IView Create<TView>(string name, Transform parent) where TView : IView
+        public IView Create<TView>(string name, Transform parent = null) where TView : IView
         {
             var prefab = _viewContainer.GetView<TView>();
 
