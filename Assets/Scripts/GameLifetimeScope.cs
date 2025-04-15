@@ -36,46 +36,41 @@ namespace Assets.Scripts
 
         private static void AddViewsAndViewModels(IContainerBuilder builder)
         {
-            RegisterViewWithViewModelOnNewGameObject<LoadingView, LoadingViewModel>(builder, Lifetime.Transient);
-
-            RegisterViewWithViewModelOnNewGameObject<UIView, UIViewModel>(builder, Lifetime.Transient);
-            RegisterViewWithViewModelOnNewGameObject<FPSView, FPSViewModel>(builder, Lifetime.Transient);
-            RegisterViewWithViewModelOnNewGameObject<InGameMenuView, InGameMenuViewModel>(builder, Lifetime.Scoped);
-
-            RegisterViewWithViewModelOnNewGameObject<ConversationView, ConversationViewModel>(builder,
-                Lifetime.Transient);
-            RegisterViewWithViewModelOnNewGameObject<DialogueLeftView, DialogueViewModel>(builder, Lifetime.Transient);
-            RegisterViewWithViewModelOnNewGameObject<DialogueRightView, DialogueViewModel>(builder, Lifetime.Transient);
-
-            RegisterViewWithViewModelOnNewGameObject<AceOfShadowsView, AceOfShadowsViewModel>(builder,
-                Lifetime.Transient);
-            RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(builder, Lifetime.Transient);
-
-            RegisterViewWithViewModelOnNewGameObject<ParticleView, ParticleViewModel>(builder,
-                Lifetime.Transient);
-            RegisterViewWithViewModelOnNewGameObject<FireControllerView, FireControllerViewModel>(builder,
-                Lifetime.Transient);
+            AddUIViews(builder);
+            AddMagicWordsViews(builder);
+            AddAceOfShadowsViews(builder);
+            AddPhoenixFlameViews(builder);
         }
 
-        private static void RegisterViewWithViewModelOnNewGameObject<TView, TViewModel>(
-            IContainerBuilder builder,
-            Lifetime lifetime,
-            string newGameObjectName = null)
-            where TViewModel : class, IViewModel
-            where TView : ViewBase<TViewModel>, IView
+        private static void AddUIViews(IContainerBuilder builder)
         {
-            builder.RegisterComponentOnNewGameObject<TView>(lifetime, newGameObjectName);
-            builder.Register<TViewModel>(lifetime);
+            builder.RegisterViewWithViewModelOnNewGameObject<LoadingView, LoadingViewModel>(Lifetime.Transient);
+
+            builder.RegisterViewWithViewModelOnNewGameObject<UIView, UIViewModel>(Lifetime.Transient);
+            builder.RegisterViewWithViewModelOnNewGameObject<FPSView, FPSViewModel>(Lifetime.Transient);
+            builder.RegisterViewWithViewModelOnNewGameObject<InGameMenuView, InGameMenuViewModel>(Lifetime.Scoped);
         }
 
-        private static void RegisterComponentsInHierarchy<TView, TViewModel>(
-            IContainerBuilder builder,
-            Lifetime lifetime)
-            where TViewModel : class, IViewModel
-            where TView : ViewBase<TViewModel>, IView
+        private static void AddMagicWordsViews(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<TView>();
-            builder.Register<TViewModel>(lifetime);
+            builder.RegisterViewWithViewModelOnNewGameObject<ConversationView, ConversationViewModel>(
+                Lifetime.Transient);
+            builder.RegisterViewWithViewModelOnNewGameObject<DialogueLeftView, DialogueViewModel>(Lifetime.Transient);
+            builder.RegisterViewWithViewModelOnNewGameObject<DialogueRightView, DialogueViewModel>(Lifetime.Transient);
+        }
+
+        private static void AddAceOfShadowsViews(IContainerBuilder builder)
+        {
+            builder.RegisterViewWithViewModelOnNewGameObject<AceOfShadowsView, AceOfShadowsViewModel>(
+                Lifetime.Transient);
+            builder.RegisterViewWithViewModelOnNewGameObject<CardView, CardViewModel>(Lifetime.Transient);
+        }
+
+        private static void AddPhoenixFlameViews(IContainerBuilder builder)
+        {
+            builder.RegisterViewWithViewModelOnNewGameObject<ParticleView, ParticleViewModel>(Lifetime.Transient);
+            builder.RegisterViewWithViewModelOnNewGameObject<FireControllerView, FireControllerViewModel>(
+                Lifetime.Transient);
         }
     }
 }

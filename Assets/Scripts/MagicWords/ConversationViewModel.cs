@@ -9,13 +9,13 @@ namespace Assets.Scripts.MagicWords
         private const string DialogueViewName = "Dialogue";
         private readonly Regex _emojiTagRegex = new(@"\{(.*?)\}");
 
-        private readonly IConversationModel _conversationModel;
         private readonly IViewFactory _viewFactory;
+        private readonly IConversationModel _conversationModel;
 
         public ConversationViewModel(IConversationModel conversationModel, IViewFactory viewFactory)
         {
-            _conversationModel = conversationModel;
             _viewFactory = viewFactory;
+            _conversationModel = conversationModel;
         }
 
         public void GenerateDialogues(Transform dialogueParent)
