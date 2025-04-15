@@ -33,14 +33,10 @@ namespace Assets.Scripts.AceOfShadows
         public bool PopCard()
         {
             if (_cardsStack.Count == 0)
-            {
-                Debug.Log("No more cards to pop");
                 return false;
-            }
 
             var viewModel = _cardsStack.Pop();
             viewModel.PopCard();
-            Debug.Log("Card Popped");
 
             return true;
         }

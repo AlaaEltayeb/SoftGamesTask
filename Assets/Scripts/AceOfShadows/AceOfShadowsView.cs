@@ -30,10 +30,26 @@ namespace Assets.Scripts.AceOfShadows
 
         private async Task PopCardAsync(CancellationToken cancellationToken)
         {
+            await DelaySafe(5f, cancellationToken);
+
             while (_keepRunning)
             {
+                Debug.Log("Here 2");
                 _keepRunning = ViewModel.PopCard();
-                await Task.Delay(1000, cancellationToken);
+                await DelaySafe(1f, cancellationToken);
+            }
+        }
+
+        private async Task DelaySafe(float seconds, CancellationToken token)
+        {
+            var elapsed = 0f;
+            while (elapsed < seconds)
+            {
+                if (token.IsCancellationRequested)
+                    return;
+
+                await Task.Yield();
+                elapsed += Time.unscaledDeltaTime;
             }
         }
 

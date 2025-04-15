@@ -610,6 +610,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5270537055149631661, guid: e0e9f63b9f2d59a4bb67a8e90cae1b9b, type: 3}
+      propertyPath: _cardsCount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6079841131557457514, guid: e0e9f63b9f2d59a4bb67a8e90cae1b9b, type: 3}
       propertyPath: m_Name
       value: AceOfShadowsCanvas
