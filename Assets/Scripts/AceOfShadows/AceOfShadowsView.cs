@@ -34,7 +34,6 @@ namespace Assets.Scripts.AceOfShadows
 
             while (_keepRunning)
             {
-                Debug.Log("Here 2");
                 _keepRunning = ViewModel.PopCard();
                 await DelaySafe(1f, cancellationToken);
             }
