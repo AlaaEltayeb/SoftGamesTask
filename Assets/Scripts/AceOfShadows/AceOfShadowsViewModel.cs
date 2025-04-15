@@ -30,13 +30,13 @@ namespace Assets.Scripts.AceOfShadows
             }
         }
 
-        public bool PopCard()
+        public bool MoveTheCardOnTop()
         {
             if (_cardsStack.Count == 0)
                 return false;
 
             var viewModel = _cardsStack.Pop();
-            viewModel.PopCard();
+            viewModel.MoveCard();
 
             return true;
         }

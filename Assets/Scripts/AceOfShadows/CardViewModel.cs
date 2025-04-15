@@ -6,17 +6,17 @@ namespace Assets.Scripts.AceOfShadows
 {
     public sealed class CardViewModel : ViewModelBase
     {
-        public Action OnCardPopped { get; set; }
+        public Action OnMoveCard { get; set; }
         public Transform CardTargetParent { get; set; }
 
-        public void PopCard()
+        public void MoveCard()
         {
-            OnCardPopped?.Invoke();
+            OnMoveCard?.Invoke();
         }
 
         public override void Dispose()
         {
-            OnCardPopped = null;
+            OnMoveCard = null;
             base.Dispose();
         }
     }

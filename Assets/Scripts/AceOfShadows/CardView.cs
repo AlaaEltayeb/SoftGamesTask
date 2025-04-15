@@ -16,7 +16,7 @@ namespace Assets.Scripts.AceOfShadows
 
             _cardImage.color = GenerateRandomColor();
 
-            ViewModel.OnCardPopped += MoveCard;
+            ViewModel.OnMoveCard += MoveCard;
         }
 
         private Color GenerateRandomColor()

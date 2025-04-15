@@ -25,16 +25,16 @@ namespace Assets.Scripts.AceOfShadows
             ViewModel.GenerateCards(_cardsCount, _cardsParent, _cardsTargetParent);
             _cancellationTokenSource = new CancellationTokenSource();
 
-            PopCardAsync(_cancellationTokenSource.Token);
+            MoveCardsAsync(_cancellationTokenSource.Token);
         }
 
-        private async Task PopCardAsync(CancellationToken cancellationToken)
+        private async Task MoveCardsAsync(CancellationToken cancellationToken)
         {
             await DelaySafe(5f, cancellationToken);
 
             while (_keepRunning)
             {
-                _keepRunning = ViewModel.PopCard();
+                _keepRunning = ViewModel.MoveTheCardOnTop();
                 await DelaySafe(1f, cancellationToken);
             }
         }
