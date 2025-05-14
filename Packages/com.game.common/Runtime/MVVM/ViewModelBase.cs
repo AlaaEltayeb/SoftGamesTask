@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace Assets.Scripts.MVVM
+namespace Game.Common.Runtime.MVVM
 {
     [PublicAPI]
     public abstract class ViewModelBase : IViewModel

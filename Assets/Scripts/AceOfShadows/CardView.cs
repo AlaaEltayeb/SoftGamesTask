@@ -1,5 +1,5 @@
-using Assets.Scripts.MVVM;
 using DG.Tweening;
+using Game.Common.Runtime.MVVM;
 using UnityEngine;
 using UnityEngine.UI;
 

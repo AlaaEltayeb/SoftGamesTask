@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Command
+namespace Game.Common.Runtime.Command
 {
     public sealed class CommandDispatcher : ICommandDispatcher
     {

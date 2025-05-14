@@ -1,4 +1,4 @@
-using Assets.Scripts.MVVM;
+using Game.Common.Runtime.MVVM;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;

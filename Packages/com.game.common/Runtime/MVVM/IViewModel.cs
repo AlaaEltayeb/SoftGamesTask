@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets.Scripts.MVVM
+namespace Game.Common.Runtime.MVVM
 {
     public interface IViewModel : IDisposable
     {

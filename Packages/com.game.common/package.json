@@ -1,0 +1,9 @@
+{
+    "name": "com.game.common",
+    "version": "0.1.0",
+    "displayName": "Game.Common",
+    "description": "Package description",
+    "unity": "2022.2",
+    "unityRelease": "0b8",
+    "hideInEditor": false
+}

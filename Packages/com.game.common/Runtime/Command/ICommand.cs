@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Command
+namespace Game.Common.Runtime.Command
 {
     public interface ICommand
     {

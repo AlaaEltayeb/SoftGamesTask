@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.MVVM
+namespace Game.Common.Runtime.MVVM
 {
     public abstract class ViewContainer : ScriptableObject, IViewContainer
     {

@@ -1,12 +1,12 @@
 using Assets.Scripts.AceOfShadows;
-using Assets.Scripts.Command;
 using Assets.Scripts.Common;
 using Assets.Scripts.InGameMenu;
 using Assets.Scripts.Loading;
 using Assets.Scripts.MagicWords;
-using Assets.Scripts.MVVM;
 using Assets.Scripts.Particle;
 using Assets.Scripts.SceneHolder;
+using Game.Common.Runtime.Command;
+using Game.Common.Runtime.MVVM;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;

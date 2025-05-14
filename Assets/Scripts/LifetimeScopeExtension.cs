@@ -1,4 +1,4 @@
-using Assets.Scripts.MVVM;
+using Game.Common.Runtime.MVVM;
 using VContainer;
 using VContainer.Unity;
 

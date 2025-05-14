@@ -1,8 +1,8 @@
 using Assets.Scripts.AceOfShadows;
 using Assets.Scripts.MagicWords;
-using Assets.Scripts.MVVM;
 using Assets.Scripts.Particle;
 using Assets.Scripts.SceneHolder;
+using Game.Common.Runtime.MVVM;
 using UnityEngine;
 
 namespace Assets.Scripts.InGameMenu

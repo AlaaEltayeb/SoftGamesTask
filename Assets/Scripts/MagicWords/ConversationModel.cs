@@ -1,6 +1,6 @@
-using Assets.Scripts.Command;
 using Assets.Scripts.Loading;
-using Assets.Scripts.MVVM;
+using Game.Common.Runtime.MVVM;
+using Game.Common.Runtime.Command;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

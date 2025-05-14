@@ -1,6 +1,6 @@
-using Assets.Scripts.Command;
 using Assets.Scripts.InGameMenu;
-using Assets.Scripts.MVVM;
+using Game.Common.Runtime.MVVM;
+using Game.Common.Runtime.Command;
 using VContainer;
 
 namespace Assets.Scripts.Loading

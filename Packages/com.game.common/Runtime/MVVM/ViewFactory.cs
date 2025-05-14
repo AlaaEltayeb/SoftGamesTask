@@ -5,7 +5,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Assets.Scripts.MVVM
+namespace Game.Common.Runtime.MVVM
 {
     [UsedImplicitly]
     public sealed class ViewFactory : IViewFactory

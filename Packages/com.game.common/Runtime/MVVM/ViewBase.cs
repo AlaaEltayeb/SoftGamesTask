@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using VContainer;
 
-namespace Assets.Scripts.MVVM
+namespace Game.Common.Runtime.MVVM
 {
     public abstract class ViewBase<TViewModel> : MonoBehaviour, IView where TViewModel : IViewModel
     {

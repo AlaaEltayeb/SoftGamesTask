@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.MVVM
+namespace Game.Common.Runtime.MVVM
 {
     public interface IViewFactory
     {

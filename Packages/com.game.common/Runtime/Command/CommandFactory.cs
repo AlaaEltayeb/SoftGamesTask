@@ -1,6 +1,6 @@
 using VContainer;
 
-namespace Assets.Scripts.Command
+namespace Game.Common.Runtime.Command
 {
     public sealed class CommandFactory : ICommandFactory
     {
